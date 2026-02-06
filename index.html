@@ -19,6 +19,7 @@ body{
   font-family:'Inter',sans-serif;
   background:linear-gradient(180deg,#fff1f5,#fde2e8);
   color:#333;
+  overflow-x:hidden;
 }
 
 .container{
@@ -34,15 +35,17 @@ body{
   text-align:center;
   color:#b30059;
   margin-bottom:50px;
+  animation: fadeDown 1.2s ease both;
 }
 
 /* Day Card */
 .day{
-  background:rgba(255,255,255,0.8);
+  background:rgba(255,255,255,0.85);
   border-radius:22px;
   padding:26px 20px;
   margin-bottom:30px;
   box-shadow:0 12px 30px rgba(0,0,0,0.08);
+  animation: fadeUp 0.9s ease both;
 }
 
 /* Title */
@@ -68,6 +71,51 @@ body{
   margin-top:40px;
   font-size:13px;
   color:#777;
+  animation: fadeUp 1.2s ease both;
+}
+
+/* Animations */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform: translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown{
+  from{
+    opacity:0;
+    transform: translateY(-20px);
+  }
+  to{
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating hearts */
+.heart{
+  position:fixed;
+  bottom:-10px;
+  font-size:14px;
+  opacity:0.35;
+  animation: floatUp 7s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes floatUp{
+  from{
+    transform: translateY(0);
+    opacity:0.4;
+  }
+  to{
+    transform: translateY(-110vh);
+    opacity:0;
+  }
 }
 </style>
 </head>
@@ -76,8 +124,8 @@ body{
 
 <div class="container">
 
-  <!-- ✍️ EDIT NAME HERE -->
-  <div class="name">Pikkuu</div>
+  <!-- ✍️ SIRF YAHA NAAM CHANGE KARNA HAI -->
+  <div class="name">Pooja</div>
 
   <div class="day">
     <h2>Rose Day</h2>
@@ -148,6 +196,18 @@ body{
   </div>
 
 </div>
+
+<!-- 💗 SOFT FLOATING HEARTS -->
+<script>
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerText="❤";
+  heart.style.left=Math.random()*100+"vw";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),7000);
+},1200);
+</script>
 
 </body>
 </html>
