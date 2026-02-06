@@ -3,94 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine Week ❤️</title>
+<title>My Valentine ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital@1&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
   background:linear-gradient(180deg,#ffd1dc,#fbc2eb);
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
 /* 🔐 LOCK */
 #lock{
   position:fixed; inset:0;
   background:linear-gradient(180deg,#ffafbd,#ffc3a0);
-  display:flex; justify-content:center; align-items:center;
+  display:flex; align-items:center; justify-content:center;
   z-index:999;
 }
 .lockBox{
-  background:#fff;
-  padding:30px;
-  border-radius:25px;
-  text-align:center;
+  background:#fff; padding:30px;
+  border-radius:25px; text-align:center;
   box-shadow:0 20px 40px rgba(0,0,0,.2);
 }
 .lockBox input{
-  padding:12px; border-radius:12px;
-  border:1px solid #ccc; width:100%;
+  width:100%; padding:12px;
+  border-radius:12px; border:1px solid #ccc;
 }
 .lockBox button{
   margin-top:15px; padding:12px 25px;
   border:none; border-radius:30px;
   background:#ff4b7d; color:#fff;
-  font-size:16px; cursor:pointer;
+  font-size:16px;
 }
 
 /* MAIN */
-.main{display:none; max-width:420px; margin:auto; padding:20px;}
-
+#app{display:none; height:100vh;}
 h1{
   font-family:'Dancing Script',cursive;
-  font-size:38px;
-  color:#b30059;
-  text-align:center;
+  text-align:center; color:#b30059;
+  font-size:36px;
 }
-
-.menu{
-  display:flex; overflow-x:auto; gap:8px; margin-bottom:20px;
+.page{
+  display:none;
+  height:100%;
+  padding:25px;
+  animation:fade .6s ease;
 }
-.menu button{
-  border:none; padding:8px 14px;
-  border-radius:20px;
-  background:#ff4b7d; color:#fff;
-  cursor:pointer; white-space:nowrap;
-}
-
-.card{
-  background:rgba(255,255,255,.65);
-  backdrop-filter:blur(10px);
-  border-radius:25px;
-  padding:22px;
-  box-shadow:0 15px 35px rgba(0,0,0,.15);
-  animation:fade 0.6s ease;
-}
+.page.active{display:block}
 
 @keyframes fade{
   from{opacity:0;transform:translateY(20px)}
   to{opacity:1;transform:translateY(0)}
 }
 
-.page{display:none}
-.page.active{display:block}
+/* NAV */
+.nav{
+  position:fixed; bottom:10px; width:100%;
+  display:flex; justify-content:center; gap:10px;
+}
+.nav button{
+  border:none; padding:8px 14px;
+  border-radius:20px;
+  background:#ff4b7d; color:#fff;
+}
 
-/* 📸 SLIDER */
+/* SLIDER */
 .slider img{
   width:100%; height:220px;
-  object-fit:cover;
-  border-radius:18px;
+  object-fit:cover; border-radius:20px;
 }
-.caption{text-align:center;font-style:italic;margin-top:8px}
-.nav{display:flex;justify-content:space-between;margin-top:10px}
-.nav button{
-  border:none;background:#ff4b7d;color:#fff;
-  padding:8px 14px;border-radius:20px;
-}
+.caption{text-align:center; font-style:italic; margin-top:8px}
 
-/* 🌹 ROSE */
+/* ROSE */
 .rose{
   position:fixed; top:-20px;
   font-size:22px;
@@ -108,141 +94,142 @@ h1{
 <div id="lock">
   <div class="lockBox">
     <h3>Only for You 💖</h3>
-    <input type="password" id="pass" placeholder="Enter Password">
+    <input id="pass" type="password" placeholder="DDMMYYYY">
     <button onclick="unlock()">Unlock ❤️</button>
   </div>
 </div>
 
-<!-- 🌸 MAIN SITE -->
-<div class="main" id="site">
+<!-- 🌸 APP -->
+<div id="app">
 
-<h1 id="name"></h1>
+<h1 id="herName"></h1>
 
 <!-- 🎵 SONG -->
 <audio controls style="width:100%">
   <source src="https://drive.google.com/file/d/1XXGt8gCiC3m2eiqy9UDpIwFpumgA5tVP/view?usp=sharing">
 </audio>
 
-<!-- MENU -->
-<div class="menu">
-  <button onclick="openDay('rose')">🌹 Rose</button>
-  <button onclick="openDay('propose')">💍 Propose</button>
-  <button onclick="openDay('choco')">🍫 Chocolate</button>
-  <button onclick="openDay('teddy')">🧸 Teddy</button>
-  <button onclick="openDay('promise')">🤝 Promise</button>
-  <button onclick="openDay('hug')">🤗 Hug</button>
-  <button onclick="openDay('kiss')">😘 Kiss</button>
-  <button onclick="openDay('valentine')">❤️ Valentine</button>
+<!-- 📖 PAGES -->
+
+<div class="page active" id="intro">
+  <p style="text-align:center">
+    This is not a website,<br>
+    it’s a journey… just for you ❤️
+  </p>
+</div>
+
+<div class="page" id="rose">
+  🌹<br>
+  "Ek rose sirf phool nahi hota,<br>
+  kabhi kisi ka pyaar ban jaata hai."
+</div>
+
+<div class="page" id="propose">
+  💍<br>
+  "Perfect nahi hoon,<br>
+  par tumhara hona chahta hoon."
+</div>
+
+<div class="page" id="choco">
+  🍫<br>
+  "Chocolate jaise sweet ho tum,<br>
+  aadat ban chuki ho."
+</div>
+
+<div class="page" id="teddy">
+  🧸<br>
+  "Agar teddy hota,<br>
+  to sirf tumhara hota."
+</div>
+
+<div class="page" id="promise">
+  🤝<br>
+  "Har mod par tumhara saath,<br>
+  ye wada sirf tumse."
+</div>
+
+<div class="page" id="hug">
+  🤗<br>
+  "Ek hug me wo sukoon,<br>
+  jo duniya nahi de sakti."
+</div>
+
+<div class="page" id="kiss">
+  😘<br>
+  "Ek kiss jo dil tak jaaye."
+</div>
+
+<div class="page" id="valentine">
+  ❤️<br>
+  "Tum sirf Valentine nahi,<br>
+  tum meri poori kahani ho."
 </div>
 
 <!-- 📸 PHOTO SLIDER -->
-<div class="card slider">
-  <img id="photo" src="pic1.jpg">
-  <div class="caption" id="cap">Our first memory ❤️</div>
-  <div class="nav">
-    <button onclick="prev()">‹</button>
-    <button onclick="next()">›</button>
+<div class="page" id="photos">
+  <div class="slider">
+    <img id="photo" src="pic1.jpg">
+    <div class="caption" id="cap">Our first memory ❤️</div>
   </div>
 </div>
 
-<!-- DAYS -->
-<div id="rose" class="card page active">
-🌹 <br>
-"Ek rose sirf phool nahi hota,<br>
-kabhi kisi ka pyaar ban jaata hai."
-</div>
-
-<div id="propose" class="card page">
-💍 <br>
-"Tum saath ho to darr nahi lagta,<br>
-kya zindagi bhar mera saath dogi?"
-</div>
-
-<div id="choco" class="card page">
-🍫 <br>
-"Chocolate ki tarah sweet ho tum,<br>
-aadat si ban gayi ho."
-</div>
-
-<div id="teddy" class="card page">
-🧸 <br>
-"Agar teddy hota,<br>
-to sirf tumhari baahon ka hota."
-</div>
-
-<div id="promise" class="card page">
-🤝 <br>
-"Har mod par tumhara haath,<br>
-yeh wada sirf tumse."
-</div>
-
-<div id="hug" class="card page">
-🤗 <br>
-"Ek hug me wo sukoon,<br>
-jo duniya nahi de sakti."
-</div>
-
-<div id="kiss" class="card page">
-😘 <br>
-"Ek kiss me bhi wafaa hoti hai,<br>
-agar dil se ho."
-</div>
-
-<div id="valentine" class="card page">
-❤️ <br>
-"Tum sirf Valentine nahi,<br>
-tum meri poori kahani ho."
+<!-- NAV -->
+<div class="nav">
+  <button onclick="prev()">◀</button>
+  <button onclick="next()">▶</button>
 </div>
 
 </div>
 
 <script>
-/* ✏️ EDIT HERE */
+/* ✏️ EDIT */
 const PASSWORD="1604";
-const HERNAME="Pikuuu";
+const NAME="Pikkuu";
 
-const photos=["e81ea064-eacd-4b95-a87a-63dd0ba33b4c.jpg","4f79277c-9678-4c17-b6be-b04ca8bfa461.jpg","30aac806-b18c-49f8-bba3-47a0d6de0f9a.jpg","2289465d-b72f-4cf3-bda0-94e3efc0edb1.jpg"];
-const captions=[
-"Our first memory ❤️",
-"Moments I love 💕",
-"Where I feel home 🏠",
-"Forever us 🌸"
+const pages=["intro","rose","propose","choco","teddy","promise","hug","kiss","valentine","photos"];
+let p=0;
+
+const photos=["e81ea064-eacd-4b95-a87a-63dd0ba33b4c.jpg","4f79277c-9678-4c17-b6be-b04ca8bfa461.jpg","2289465d-b72f-4cf3-bda0-94e3efc0edb1.jpg"];
+const caps=[
+"First memory ❤️",
+"Together forever 💕",
+"My safe place 🌸"
 ];
+let i=0;
 
-document.getElementById("name").innerText=HERNAME;
+herName.innerText=NAME;
 
 function unlock(){
  if(pass.value===PASSWORD){
-   lock.style.display="none";
-   site.style.display="block";
- }else alert("Wrong password 💔");
+  lock.style.display="none";
+  app.style.display="block";
+ }
 }
 
-/* SLIDER */
-let i=0;
 function show(){
- photo.src=photos[i];
- cap.innerText=captions[i];
-}
-function next(){i=(i+1)%photos.length;show()}
-function prev(){i=(i-1+photos.length)%photos.length;show()}
-show();
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+ document.getElementById(pages[p]).classList.add('active');
 
-/* DAYS */
-function openDay(id){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- if(id==="rose"){
+ if(pages[p]==="rose"){
   for(let j=0;j<12;j++){
    let r=document.createElement("div");
-   r.className="rose";
-   r.innerText="🌹";
+   r.className="rose"; r.innerText="🌹";
    r.style.left=Math.random()*100+"vw";
    document.body.appendChild(r);
    setTimeout(()=>r.remove(),6000);
   }
  }
 }
+function next(){p=(p+1)%pages.length;show()}
+function prev(){p=(p-1+pages.length)%pages.length;show()}
+
+/* slider */
+function slide(){
+ photo.src=photos[i];
+ cap.innerText=caps[i];
+}
+setInterval(()=>{i=(i+1)%photos.length;slide()},3000);
+slide();
 </script>
 
 </body>
