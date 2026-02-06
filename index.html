@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+<title>Valentine Week ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital@1&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
@@ -15,17 +15,13 @@ body{
   overflow-x:hidden;
 }
 
-/* 🔐 LOCK SCREEN */
-#lockScreen{
-  position:fixed;
-  inset:0;
+/* 🔐 LOCK */
+#lock{
+  position:fixed; inset:0;
   background:linear-gradient(180deg,#ffafbd,#ffc3a0);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex; justify-content:center; align-items:center;
   z-index:999;
 }
-
 .lockBox{
   background:#fff;
   padding:30px;
@@ -33,49 +29,19 @@ body{
   text-align:center;
   box-shadow:0 20px 40px rgba(0,0,0,.2);
 }
-
 .lockBox input{
-  padding:12px;
-  border-radius:12px;
-  border:1px solid #ccc;
-  width:100%;
-  margin-top:10px;
-  font-size:16px;
+  padding:12px; border-radius:12px;
+  border:1px solid #ccc; width:100%;
 }
-
 .lockBox button{
-  margin-top:15px;
-  padding:12px 25px;
-  border:none;
-  border-radius:30px;
-  background:#ff4b7d;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
+  margin-top:15px; padding:12px 25px;
+  border:none; border-radius:30px;
+  background:#ff4b7d; color:#fff;
+  font-size:16px; cursor:pointer;
 }
 
 /* MAIN */
-.wrap{
-  max-width:420px;
-  margin:auto;
-  padding:24px;
-  display:none;
-}
-
-.card{
-  background:rgba(255,255,255,.6);
-  backdrop-filter:blur(10px);
-  border-radius:25px;
-  padding:25px;
-  margin-bottom:25px;
-  box-shadow:0 20px 40px rgba(0,0,0,.15);
-  animation:fadeUp 1s ease;
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
-}
+.main{display:none; max-width:420px; margin:auto; padding:20px;}
 
 h1{
   font-family:'Dancing Script',cursive;
@@ -84,78 +50,54 @@ h1{
   text-align:center;
 }
 
-h2{
-  font-family:'Playfair Display',serif;
-  color:#b30059;
-  text-align:center;
+.menu{
+  display:flex; overflow-x:auto; gap:8px; margin-bottom:20px;
+}
+.menu button{
+  border:none; padding:8px 14px;
+  border-radius:20px;
+  background:#ff4b7d; color:#fff;
+  cursor:pointer; white-space:nowrap;
 }
 
-p{
-  text-align:center;
-  line-height:1.8;
-  font-size:15px;
+.card{
+  background:rgba(255,255,255,.65);
+  backdrop-filter:blur(10px);
+  border-radius:25px;
+  padding:22px;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+  animation:fade 0.6s ease;
 }
 
-/* ✍️ Typing */
-#typing{min-height:90px}
-
-/* ⏳ Countdown */
-#countdown{
-  font-size:18px;
-  font-weight:bold;
-  color:#b30059;
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
 }
+
+.page{display:none}
+.page.active{display:block}
 
 /* 📸 SLIDER */
-.slider{
-  position:relative;
-  overflow:hidden;
-}
-
-.slide{
-  display:none;
-  text-align:center;
-}
-
-.slide img{
-  width:100%;
-  height:220px;
+.slider img{
+  width:100%; height:220px;
   object-fit:cover;
-  border-radius:20px;
+  border-radius:18px;
 }
-
-.caption{
-  margin-top:8px;
-  font-size:14px;
-  font-style:italic;
-}
-
-.nav{
-  display:flex;
-  justify-content:space-between;
-  margin-top:10px;
-}
-
+.caption{text-align:center;font-style:italic;margin-top:8px}
+.nav{display:flex;justify-content:space-between;margin-top:10px}
 .nav button{
-  border:none;
-  background:#ff4b7d;
-  color:#fff;
-  padding:8px 14px;
-  border-radius:20px;
-  cursor:pointer;
+  border:none;background:#ff4b7d;color:#fff;
+  padding:8px 14px;border-radius:20px;
 }
 
-/* ❤️ Hearts */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:20px;
-  color:rgba(255,0,80,.5);
-  animation:float 7s linear infinite;
+/* 🌹 ROSE */
+.rose{
+  position:fixed; top:-20px;
+  font-size:22px;
+  animation:fall 6s linear infinite;
 }
-
-@keyframes float{
-  to{transform:translateY(-110vh);opacity:0}
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0}
 }
 </style>
 </head>
@@ -163,136 +105,144 @@ p{
 <body>
 
 <!-- 🔐 PASSWORD -->
-<div id="lockScreen">
+<div id="lock">
   <div class="lockBox">
-    <h2>Only for You 💖</h2>
-    <p>Enter your special date</p>
-    <input type="password" id="pass" placeholder="DDMMYYYY">
+    <h3>Only for You 💖</h3>
+    <input type="password" id="pass" placeholder="Enter Password">
     <button onclick="unlock()">Unlock ❤️</button>
   </div>
 </div>
 
-<!-- 🌸 SITE -->
-<div class="wrap" id="site">
+<!-- 🌸 MAIN SITE -->
+<div class="main" id="site">
 
-  <!-- INTRO -->
-  <div class="card">
-    <h1 id="herName"></h1>
-    <p id="typing"></p>
-  </div>
+<h1 id="name"></h1>
 
-  <!-- COUNTDOWN -->
-  <div class="card">
-    <h2>Valentine Countdown ⏳</h2>
-    <p id="countdown"></p>
-  </div>
-
-  <!-- PHOTO SLIDER -->
-  <div class="card">
-    <h2>Our Memories 📸</h2>
-    <div class="slider">
-
-      <div class="slide">
-        <img src="e81ea064-eacd-4b95-a87a-63dd0ba33b4c.jpg">
-        <div class="caption">The day my smile found you 💕</div>
-      </div>
-
-      <div class="slide">
-        <img src="4f79277c-9678-4c17-b6be-b04ca8bfa461.jpg">
-        <div class="caption">Moments I never want to forget ✨</div>
-      </div>
-
-      <div class="slide">
-        <img src="30aac806-b18c-49f8-bba3-47a0d6de0f9a.jpg">
-        <div class="caption">Where my heart feels home ❤️</div>
-      </div>
-
-      <div class="slide">
-        <img src="2289465d-b72f-4cf3-bda0-94e3efc0edb1.jpg">
-        <div class="caption">Forever starts here 🌸</div>
-      </div>
-
-      <div class="nav">
-        <button onclick="prev()">‹</button>
-        <button onclick="next()">›</button>
-      </div>
-
-    </div>
-  </div>
-
-  <p style="text-align:center;font-size:13px;color:#fff">
-    Made with ❤️ only for you
-  </p>
-</div>
-
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2023/03/02/audio_6b0c6a6f0d.mp3">
+<!-- 🎵 SONG -->
+<audio controls style="width:100%">
+  <source src="Chandi Jaisa Rang Song.mp3">
 </audio>
 
+<!-- MENU -->
+<div class="menu">
+  <button onclick="openDay('rose')">🌹 Rose</button>
+  <button onclick="openDay('propose')">💍 Propose</button>
+  <button onclick="openDay('choco')">🍫 Chocolate</button>
+  <button onclick="openDay('teddy')">🧸 Teddy</button>
+  <button onclick="openDay('promise')">🤝 Promise</button>
+  <button onclick="openDay('hug')">🤗 Hug</button>
+  <button onclick="openDay('kiss')">😘 Kiss</button>
+  <button onclick="openDay('valentine')">❤️ Valentine</button>
+</div>
+
+<!-- 📸 PHOTO SLIDER -->
+<div class="card slider">
+  <img id="photo" src="pic1.jpg">
+  <div class="caption" id="cap">Our first memory ❤️</div>
+  <div class="nav">
+    <button onclick="prev()">‹</button>
+    <button onclick="next()">›</button>
+  </div>
+</div>
+
+<!-- DAYS -->
+<div id="rose" class="card page active">
+🌹 <br>
+"Ek rose sirf phool nahi hota,<br>
+kabhi kisi ka pyaar ban jaata hai."
+</div>
+
+<div id="propose" class="card page">
+💍 <br>
+"Tum saath ho to darr nahi lagta,<br>
+kya zindagi bhar mera saath dogi?"
+</div>
+
+<div id="choco" class="card page">
+🍫 <br>
+"Chocolate ki tarah sweet ho tum,<br>
+aadat si ban gayi ho."
+</div>
+
+<div id="teddy" class="card page">
+🧸 <br>
+"Agar teddy hota,<br>
+to sirf tumhari baahon ka hota."
+</div>
+
+<div id="promise" class="card page">
+🤝 <br>
+"Har mod par tumhara haath,<br>
+yeh wada sirf tumse."
+</div>
+
+<div id="hug" class="card page">
+🤗 <br>
+"Ek hug me wo sukoon,<br>
+jo duniya nahi de sakti."
+</div>
+
+<div id="kiss" class="card page">
+😘 <br>
+"Ek kiss me bhi wafaa hoti hai,<br>
+agar dil se ho."
+</div>
+
+<div id="valentine" class="card page">
+❤️ <br>
+"Tum sirf Valentine nahi,<br>
+tum meri poori kahani ho."
+</div>
+
+</div>
+
 <script>
-/* ✏️ EDIT THESE */
-const PASSWORD = "16042007";        // her birthday
-const HER_NAME = "Pikku";          // her name
-const VALENTINE = new Date("Feb 14, 2026 00:00:00").getTime();
+/* ✏️ EDIT HERE */
+const PASSWORD="1604";
+const HERNAME="Pikuuu";
 
-/* name */
-document.getElementById("herName").innerText = HER_NAME;
+const photos=["e81ea064-eacd-4b95-a87a-63dd0ba33b4c.jpg","4f79277c-9678-4c17-b6be-b04ca8bfa461.jpg","30aac806-b18c-49f8-bba3-47a0d6de0f9a.jpg","2289465d-b72f-4cf3-bda0-94e3efc0edb1.jpg"];
+const captions=[
+"Our first memory ❤️",
+"Moments I love 💕",
+"Where I feel home 🏠",
+"Forever us 🌸"
+];
 
-/* unlock */
+document.getElementById("name").innerText=HERNAME;
+
 function unlock(){
-  if(document.getElementById("pass").value === PASSWORD){
-    document.getElementById("lockScreen").style.display="none";
-    document.getElementById("site").style.display="block";
-    typeText();
-  } else {
-    alert("Try again ❤️");
-  }
+ if(pass.value===PASSWORD){
+   lock.style.display="none";
+   site.style.display="block";
+ }else alert("Wrong password 💔");
 }
 
-/* typing */
-const text=`Somewhere between laughs and silence,
-you became my favorite feeling.
-This little world exists,
-because you exist.`;
-
+/* SLIDER */
 let i=0;
-function typeText(){
-  if(i<text.length){
-    typing.innerHTML+=text.charAt(i);
-    i++;
-    setTimeout(typeText,40);
+function show(){
+ photo.src=photos[i];
+ cap.innerText=captions[i];
+}
+function next(){i=(i+1)%photos.length;show()}
+function prev(){i=(i-1+photos.length)%photos.length;show()}
+show();
+
+/* DAYS */
+function openDay(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ if(id==="rose"){
+  for(let j=0;j<12;j++){
+   let r=document.createElement("div");
+   r.className="rose";
+   r.innerText="🌹";
+   r.style.left=Math.random()*100+"vw";
+   document.body.appendChild(r);
+   setTimeout(()=>r.remove(),6000);
   }
+ }
 }
-
-/* countdown */
-setInterval(()=>{
-  let now=new Date().getTime();
-  let d=VALENTINE-now;
-  let days=Math.floor(d/(1000*60*60*24));
-  countdown.innerText = days>0 ? days+" days to Valentine ❤️" : "Happy Valentine’s Day 💖";
-},1000);
-
-/* slider */
-let index=0;
-const slides=document.getElementsByClassName("slide");
-function show(n){
-  for(let s of slides){s.style.display="none"}
-  slides[n].style.display="block";
-}
-function next(){index=(index+1)%slides.length;show(index)}
-function prev(){index=(index-1+slides.length)%slides.length;show(index)}
-show(0);
-
-/* hearts */
-setInterval(()=>{
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerText="❤️";
-  h.style.left=Math.random()*100+"vw";
-  h.style.fontSize=Math.random()*20+15+"px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),7000);
-},600);
 </script>
 
 </body>
