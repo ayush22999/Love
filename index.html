@@ -3,234 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Valentine ❤️</title>
+<title>Valentine Week ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body{
+*{
   margin:0;
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(180deg,#ffd1dc,#fbc2eb);
-  overflow:hidden;
+  padding:0;
+  box-sizing:border-box;
 }
 
-/* 🔐 LOCK */
-#lock{
-  position:fixed; inset:0;
-  background:linear-gradient(180deg,#ffafbd,#ffc3a0);
-  display:flex; align-items:center; justify-content:center;
-  z-index:999;
-}
-.lockBox{
-  background:#fff; padding:30px;
-  border-radius:25px; text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,.2);
-}
-.lockBox input{
-  width:100%; padding:12px;
-  border-radius:12px; border:1px solid #ccc;
-}
-.lockBox button{
-  margin-top:15px; padding:12px 25px;
-  border:none; border-radius:30px;
-  background:#ff4b7d; color:#fff;
-  font-size:16px;
+body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(180deg,#fff1f5,#fde2e8);
+  color:#333;
 }
 
-/* MAIN */
-#app{display:none; height:100vh;}
-h1{
+.container{
+  max-width:420px;
+  margin:auto;
+  padding:40px 22px;
+}
+
+/* Name */
+.name{
   font-family:'Dancing Script',cursive;
-  text-align:center; color:#b30059;
-  font-size:36px;
-}
-.page{
-  display:none;
-  height:100%;
-  padding:25px;
-  animation:fade .6s ease;
-}
-.page.active{display:block}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
+  font-size:42px;
+  text-align:center;
+  color:#b30059;
+  margin-bottom:50px;
 }
 
-/* NAV */
-.nav{
-  position:fixed; bottom:10px; width:100%;
-  display:flex; justify-content:center; gap:10px;
-}
-.nav button{
-  border:none; padding:8px 14px;
-  border-radius:20px;
-  background:#ff4b7d; color:#fff;
+/* Day Card */
+.day{
+  background:rgba(255,255,255,0.8);
+  border-radius:22px;
+  padding:26px 20px;
+  margin-bottom:30px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
 }
 
-/* SLIDER */
-.slider img{
-  width:100%; height:220px;
-  object-fit:cover; border-radius:20px;
+/* Title */
+.day h2{
+  font-family:'Dancing Script',cursive;
+  font-size:28px;
+  text-align:center;
+  color:#b30059;
+  margin-bottom:14px;
 }
-.caption{text-align:center; font-style:italic; margin-top:8px}
 
-/* ROSE */
-.rose{
-  position:fixed; top:-20px;
-  font-size:22px;
-  animation:fall 6s linear infinite;
+/* Shayari */
+.day p{
+  text-align:center;
+  font-size:15px;
+  line-height:1.7;
+  color:#444;
 }
-@keyframes fall{
-  to{transform:translateY(110vh);opacity:0}
+
+/* Footer */
+.footer{
+  text-align:center;
+  margin-top:40px;
+  font-size:13px;
+  color:#777;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🔐 PASSWORD -->
-<div id="lock">
-  <div class="lockBox">
-    <h3>Only for You 💖</h3>
-    <input id="pass" type="password" placeholder="DDMMYYYY">
-    <button onclick="unlock()">Unlock ❤️</button>
+<div class="container">
+
+  <!-- ✍️ EDIT NAME HERE -->
+  <div class="name">Pikkuu</div>
+
+  <div class="day">
+    <h2>Rose Day</h2>
+    <p>
+      Ek phool kaafi nahi hota,<br>
+      par tum ho to har din khilta hai.
+    </p>
   </div>
-</div>
 
-<!-- 🌸 APP -->
-<div id="app">
-
-<h1 id="herName"></h1>
-
-<!-- 🎵 SONG -->
-<audio controls style="width:100%">
-  <source src="https://drive.google.com/file/d/1XXGt8gCiC3m2eiqy9UDpIwFpumgA5tVP/view?usp=sharing">
-</audio>
-
-<!-- 📖 PAGES -->
-
-<div class="page active" id="intro">
-  <p style="text-align:center">
-    This is not a website,<br>
-    it’s a journey… just for you ❤️
-  </p>
-</div>
-
-<div class="page" id="rose">
-  🌹<br>
-  "Ek rose sirf phool nahi hota,<br>
-  kabhi kisi ka pyaar ban jaata hai."
-</div>
-
-<div class="page" id="propose">
-  💍<br>
-  "Perfect nahi hoon,<br>
-  par tumhara hona chahta hoon."
-</div>
-
-<div class="page" id="choco">
-  🍫<br>
-  "Chocolate jaise sweet ho tum,<br>
-  aadat ban chuki ho."
-</div>
-
-<div class="page" id="teddy">
-  🧸<br>
-  "Agar teddy hota,<br>
-  to sirf tumhara hota."
-</div>
-
-<div class="page" id="promise">
-  🤝<br>
-  "Har mod par tumhara saath,<br>
-  ye wada sirf tumse."
-</div>
-
-<div class="page" id="hug">
-  🤗<br>
-  "Ek hug me wo sukoon,<br>
-  jo duniya nahi de sakti."
-</div>
-
-<div class="page" id="kiss">
-  😘<br>
-  "Ek kiss jo dil tak jaaye."
-</div>
-
-<div class="page" id="valentine">
-  ❤️<br>
-  "Tum sirf Valentine nahi,<br>
-  tum meri poori kahani ho."
-</div>
-
-<!-- 📸 PHOTO SLIDER -->
-<div class="page" id="photos">
-  <div class="slider">
-    <img id="photo" src="pic1.jpg">
-    <div class="caption" id="cap">Our first memory ❤️</div>
+  <div class="day">
+    <h2>Propose Day</h2>
+    <p>
+      Lafzon ki zarurat nahi,<br>
+      bas itna kehna hai — tum chahiye.
+    </p>
   </div>
+
+  <div class="day">
+    <h2>Chocolate Day</h2>
+    <p>
+      Kuch cheezein aadat ban jaati hain,<br>
+      jaise tum… aur tumhari yaadein.
+    </p>
+  </div>
+
+  <div class="day">
+    <h2>Teddy Day</h2>
+    <p>
+      Agar sukoon ko koi roop dena ho,<br>
+      shayad wo tum jaisa ho.
+    </p>
+  </div>
+
+  <div class="day">
+    <h2>Promise Day</h2>
+    <p>
+      Har din perfect nahi hoga,<br>
+      par har din tumhara saath hoga.
+    </p>
+  </div>
+
+  <div class="day">
+    <h2>Hug Day</h2>
+    <p>
+      Kabhi kabhi ek gale lagna,<br>
+      saari baatein keh deta hai.
+    </p>
+  </div>
+
+  <div class="day">
+    <h2>Kiss Day</h2>
+    <p>
+      Ek chhota sa ehsaas,<br>
+      jo dil tak pahunch jaata hai.
+    </p>
+  </div>
+
+  <div class="day">
+    <h2>Valentine’s Day</h2>
+    <p>
+      Tum sirf ek din ka khayal nahi,<br>
+      tum har din ki wajah ho.
+    </p>
+  </div>
+
+  <div class="footer">
+    Made with quiet love ❤️
+  </div>
+
 </div>
-
-<!-- NAV -->
-<div class="nav">
-  <button onclick="prev()">◀</button>
-  <button onclick="next()">▶</button>
-</div>
-
-</div>
-
-<script>
-/* ✏️ EDIT */
-const PASSWORD="1604";
-const NAME="Pikkuu";
-
-const pages=["intro","rose","propose","choco","teddy","promise","hug","kiss","valentine","photos"];
-let p=0;
-
-const photos=["e81ea064-eacd-4b95-a87a-63dd0ba33b4c.jpg","4f79277c-9678-4c17-b6be-b04ca8bfa461.jpg","2289465d-b72f-4cf3-bda0-94e3efc0edb1.jpg"];
-const caps=[
-"First memory ❤️",
-"Together forever 💕",
-"My safe place 🌸"
-];
-let i=0;
-
-herName.innerText=NAME;
-
-function unlock(){
- if(pass.value===PASSWORD){
-  lock.style.display="none";
-  app.style.display="block";
- }
-}
-
-function show(){
- document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
- document.getElementById(pages[p]).classList.add('active');
-
- if(pages[p]==="rose"){
-  for(let j=0;j<12;j++){
-   let r=document.createElement("div");
-   r.className="rose"; r.innerText="🌹";
-   r.style.left=Math.random()*100+"vw";
-   document.body.appendChild(r);
-   setTimeout(()=>r.remove(),6000);
-  }
- }
-}
-function next(){p=(p+1)%pages.length;show()}
-function prev(){p=(p-1+pages.length)%pages.length;show()}
-
-/* slider */
-function slide(){
- photo.src=photos[i];
- cap.innerText=caps[i];
-}
-setInterval(()=>{i=(i+1)%photos.length;slide()},3000);
-slide();
-</script>
 
 </body>
 </html>
